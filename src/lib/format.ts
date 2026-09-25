@@ -10,7 +10,7 @@ export function money(v: number, ccy: Ccy = 'USD', opts: { signed?: boolean; com
   let body: string;
   if (compact && abs >= 1e9) body = (abs / 1e9).toFixed(digits ?? 2) + 'B';
   else if (compact && abs >= 1e6) body = (abs / 1e6).toFixed(digits ?? (abs >= 1e8 ? 0 : 2)) + 'M';
-  else if (compact && abs >= 1e4) body = (abs / 1e3).toFixed(digits ?? 0) + 'K';
+  else if (compact && abs >= 1e3) body = (abs / 1e3).toFixed(digits ?? (abs < 1e4 ? 1 : 0)) + 'K';
   else body = abs.toLocaleString('en-US', { maximumFractionDigits: 0 });
   const sign = v < 0 ? MINUS : signed && v > 0 ? '+' : '';
   return `${sign}${SYM[ccy]}${body}`;

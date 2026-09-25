@@ -3,3 +3,4 @@ dist
 *.tsbuildinfo
 e2e/screens
 .vercel
+dist-qa

@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0E2A47; --action: #236CFF; --cash: #0F8A5F; --risk: #C2410C; --fx: #B7791F; --ai: #6E56CF;
+  --paper: #F5F7FA; --surface: #FFFFFF; --rule: #DDE3EA; --muted: #5B6B7C; --text: #0E2A47;
+  --ai-bg: #F4F1FE; --soft: #EEF2F7;
+}
+.theme-dev {
+  --paper: #0B1B2E; --surface: #11263D; --rule: #22405F; --muted: #9FB2C6; --ink: #E6EDF5; --text: #E6EDF5;
+  --ai-bg: #1C2150; --soft: #16304C; --action: #4C8BFF; --cash: #34C38F; --risk: #F07B4A; --fx: #E0A84A; --ai: #9C8AF0;
+}
+html, body { background: var(--paper); color: var(--text); }
+body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; }
+code, pre, .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+*:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; border-radius: 4px; }
+.num { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+a { color: inherit; }
+.link { color: var(--action); text-decoration: underline; text-underline-offset: 2px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
+.rule-b { border-bottom: 1px solid var(--rule); }
+.rule-t { border-top: 1px solid var(--rule); }
+table.data { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.data th { text-align: left; font-weight: 500; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+table.data td { padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.data td.r, table.data th.r { text-align: right; }
+input[type=range] { accent-color: var(--action); }
+.skeleton { background: linear-gradient(90deg, var(--soft) 25%, var(--rule) 50%, var(--soft) 75%); background-size: 200% 100%; animation: sk 1.2s infinite; border-radius: 6px; }
+@keyframes sk { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } * { transition: none !important; } }
+.scroll-x { overflow-x: auto; }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sidebar { width: 64px !important; }
+  .sidebar .sidebar-label { display: none; }
+}
+.tour-spot { position: relative; z-index: 55; box-shadow: 0 0 0 3px var(--ai), 0 0 0 9999px rgba(14, 42, 71, 0.28); border-radius: 10px; transition: box-shadow .2s; }
