@@ -18,7 +18,7 @@ The smoke test uses a local Chromium (`/opt/pw-browsers/...` or `CHROMIUM_PATH`)
 
 ## Deploy
 
-Vercel: `npx vercel --prod` (SPA rewrites are in `vercel.json`). Then set `PROTOTYPE_URL` in `src/config.ts`.
+Live at https://flowcast-kk.vercel.app/ (Vercel, SPA rewrites in `vercel.json`).
 
 ## Layout
 

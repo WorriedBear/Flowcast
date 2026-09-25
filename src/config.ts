@@ -1,7 +1,7 @@
 export const PRODUCT = 'FlowCast';
 export const TAGLINE = 'for Intuit Enterprise Suite';
 export const POSITIONING_LINE = "FlowCast extends Intuit Intelligence's forecasting and Agent Studio to multi-currency treasury and third-party developers.";
-export const PROTOTYPE_URL = '';
+export const PROTOTYPE_URL = 'https://flowcast-kk.vercel.app/';
 export const DECK_URL = '';
 export const VIDEO_URL = '';
 export const REPO_URL = 'https://github.com/WorriedBear/Flowcast';

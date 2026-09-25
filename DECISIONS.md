@@ -14,5 +14,5 @@ Decisions made where the spec was ambiguous or conflicted, per Part 0.4.
 10. **Notifications.** With the bell cut, "creates a notification" is delivered as a toast plus an audit entry.
 11. **QA.** `npm run qa` = banned-pattern grep + one Playwright smoke test (every kept route, no console errors, no links to non-kept routes, initial `data-action` IDs present, accessible button names, `document.title`, no horizontal scroll at 390px) plus the scenario-breach, escalation round-trip and publish-flywheel flows. ESLint was not added in the 3-hour scope; `tsc` runs in strict mode with `noUnusedLocals`.
 12. **Fonts.** IBM Plex is loaded from Google Fonts (the only network call). The smoke test ignores font-load failures from sandboxed environments.
-13. **Deployment.** `vercel.json` is included. `PROTOTYPE_URL` in `src/config.ts` stays empty until deployed; empty links are hidden on `/about`.
+13. **Deployment.** Deployed on Vercel at https://flowcast-kk.vercel.app/ ; `PROTOTYPE_URL` in `src/config.ts` points there.
 14. **build-spec.md** served on `/ai-process` is the spec without the builder-only appendix.
