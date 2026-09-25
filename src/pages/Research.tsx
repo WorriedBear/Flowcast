@@ -1,14 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Ext, Tabs, usePageTitle } from '../components/ui';
-import { RESEARCH, type Theme } from '../data/research';
+import { PERSONAS, RESEARCH, type Theme } from '../data/research';
 
-const PERSONAS = [
-  { n: 'Priya Raman', r: 'CFO, Solace Living Inc.', goals: 'Know cash by entity and currency 13 weeks out; fund, hedge or delay with confidence.', pains: 'Monday spreadsheet rebuilt from exports; FX seen only after the fact; can’t afford a treasury hire.', day: 'Pulls four exports at 7 AM, reconciles intercompany, converts at yesterday’s rates, and presents a number she doesn’t fully trust by noon.', jtbd: 'When the week starts, I want to know where cash will be across every entity and currency for the next 13 weeks, so I can decide what to fund, hedge, or delay with confidence.', q: 'I’d act on a forecast if I could see exactly where each number came from.' },
-  { n: 'Marcus Lee', r: 'Controller, Solace Living Inc.', goals: 'Clean approvals, a defensible audit trail, a policy that is actually enforced.', pains: 'Approvals in email threads; no record of why a transfer happened.', day: 'Chases approvers for intercompany transfers and rebuilds the audit trail at quarter end.', jtbd: 'When money moves, I want the approval, the reason and the source recorded automatically, so audit is a non-event.', q: 'I don’t mind automation. I mind not knowing who approved what.' },
-  { n: 'Dev Shah', r: 'Co-founder, Northbeam Labs (fictional)', goals: 'Ship a finance agent in weeks and reach paying customers.', pains: 'Report-centric APIs, metered reads that punish agents, no agent framework, unclear monetization.', day: 'Writes ETL to reshape report endpoints and worries about read costs as usage grows.', jtbd: 'When I build an AI agent for finance teams, I want real-time, AI-ready data and a clear path to paying customers, so I can ship in weeks, not quarters.', q: 'Every time an agent gets more useful, my API bill goes up.' },
-  { n: 'Elena Vogt, CTP', r: 'Treasury advisor, Harbor & Vale Advisory (fictional)', goals: 'Advise quickly and well; turn one-off calls into recurring work.', pains: 'Days spent collecting context before any advice.', day: 'Emails clients for exposures, forecasts and policies, then waits.', jtbd: 'When a client escalates a treasury decision, I want the full context instantly so I can advise in 30 minutes, not 3 days.', q: 'Give me the exposure, the forecast and the policy on one page and I can answer the same day.' },
-];
 const CURRENT = [
   ['Export', 'IES reports, bank portals', 'Downloads 4 exports', '😩 Tedious', 'Manual, error-prone', 'Autonomous consolidation'],
   ['Reconcile', 'Spreadsheet', 'Matches intercompany', '😤 Frustrated', 'Hours lost each week', 'Entity-aware ledger graph'],
@@ -52,12 +46,14 @@ export default function Research() {
       </section>
       <section>
         <h2 className="text-xl font-semibold">Personas</h2>
+        <p className="mt-1 max-w-3xl text-sm text-muted">Priya (CFO), Marcus (Controller) and Aisha (FP&amp;A Manager) share the CFO workspace: Command Center, Ask FlowCast, Scenario Lab, FX, Approvals and the Trust Center. Dev uses the developer platform and Elena the advisor workspace.</p>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {PERSONAS.map((p) => (
             <article key={p.n} className="panel p-4 text-sm">
-              <div className="text-base font-semibold">{p.n}</div><div className="text-xs text-muted">{p.r}</div>
-              <dl className="mt-2 space-y-1.5"><div><dt className="text-xs text-muted">Goals</dt><dd>{p.goals}</dd></div><div><dt className="text-xs text-muted">Pains</dt><dd>{p.pains}</dd></div><div><dt className="text-xs text-muted">A day in the life</dt><dd>{p.day}</dd></div><div><dt className="text-xs text-muted">Job to be done</dt><dd>{p.jtbd}</dd></div></dl>
+              <div className="text-base font-semibold">{p.n}</div><div className="text-xs text-muted">{p.r}{p.age ? ` · age ${p.age}` : ''}</div>
+              <dl className="mt-2 space-y-1.5"><div><dt className="text-xs text-muted">Goals</dt><dd>{p.goals}</dd></div><div><dt className="text-xs text-muted">Pains</dt><dd>{p.pains}</dd></div><div><dt className="text-xs text-muted">A day in the life</dt><dd>{p.day}</dd></div><div><dt className="text-xs text-muted">Job to be done</dt><dd>{p.jtbd}</dd></div>{p.uses && <div><dt className="text-xs text-muted">Uses in FlowCast</dt><dd>{p.uses.map((u, i) => <span key={u.to + u.label}>{i > 0 && ', '}<Link to={u.to} className="link">{u.label}</Link></span>)}</dd></div>}</dl>
               <blockquote className="mt-2 border-l-2 border-fx pl-2 italic">&ldquo;{p.q}&rdquo;<footer className="not-italic text-xs text-muted">Composite quote, synthesized from research</footer></blockquote>
+              <p className="mt-2 text-xs text-muted">Composite persona, synthesized from research; not a real individual.</p>
             </article>
           ))}
         </div>
